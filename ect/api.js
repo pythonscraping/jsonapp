@@ -12,6 +12,8 @@ var Mutliplechoice = require('./models/multiplechoice.js');
 var Rating = require('./models/rating.js');
 
 
+var bodyParser = require('body-parser')
+api.use(bodyParser)
 
 api.post('/authenticate', function(req, res) {
 
