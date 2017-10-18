@@ -247,4 +247,8 @@ app.use("/admin", administration);
 
 
 
+var apii = require("./api.js"); 
+app.use("/api", apii); 
+
+
 app.listen(80);
