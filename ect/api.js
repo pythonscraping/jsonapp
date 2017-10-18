@@ -15,6 +15,7 @@ var Rating = require('./models/rating.js');
 
 api.post('/authenticate', function(req, res) {
 
+	console.log(req.body);
   // find the user
   User.findOne({
     "local.email": req.body.email
