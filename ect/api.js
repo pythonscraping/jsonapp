@@ -13,7 +13,9 @@ var Rating = require('./models/rating.js');
 
 
 var bodyParser = require('body-parser')
-api.use(bodyParser)
+
+api.use(bodyParser.json()); // for parsing application/json
+api.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 api.post('/authenticate', function(req, res) {
 
