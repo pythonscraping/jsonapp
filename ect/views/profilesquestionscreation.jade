@@ -1,0 +1,46 @@
+head
+	script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+	link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
+	script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+	link(href='/background.css', rel='stylesheet')
+	
+
+
+
+
+div(class="container fluid")
+	h1 Eclectic - Administration - Profile questions 
+
+
+	h2 Open Question
+	form(action="/openquestion" method="post")
+		label name
+		input(type="text",class="form-control",name="name")
+		label question
+		input(type="text",class="form-control",name="name")
+		button(type="create") Creation
+
+	br
+
+
+
+	h2 Open Multiple Choice 
+	button(class="addquestion") Add Answer
+	form(action="/multiplechoice" method="post")
+		label name
+		input(type="text",class="form-control",name="name")
+		label question
+		input(type="text",class="form-control",name="question")
+		label answers
+		div(class="questions")
+			input(type="text",class="form-control",name="answers[]")
+		button(type="create") Creation
+
+
+	h2 Open Rating question 
+	form(action="/ratingquestion" method="post")
+		label name
+		input(type="text",class="form-control",name="name")
+		button(type="create") Creation
+
+script(src="/profilequestioncreation.js")

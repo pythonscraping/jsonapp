@@ -1,0 +1,46 @@
+head
+	link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
+	script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+	link(href='/general.css', rel='stylesheet')
+
+
+
+
+div(class="container fluid")
+	h1 Eclectic 
+	h2 General info
+	form(action="/generalinfo" method="post")
+		label You are a 
+			select(name="gender")
+				option(value="null") -
+				option(value="female") Female
+				option(value="male") Male
+		br
+		label How old are you ?
+		select(name="age")
+			option(value="null") -
+			- var n = 18;
+			while n < 50
+				option(value=""+n)=n
+				p=n++
+		br
+		label Looking for people between
+		select(name="minage")
+			option(value="null") -
+			- var n = 18;
+			while n < 50
+				option(value=""+n)=n
+				p=n++
+
+		label and
+		select(name="maxage")
+			option(value="null") -
+			- var n = 18;
+			while n < 50
+				option(value=""+n)=n
+				p=n++
+		br
+		br
+		button(type="submit") Next 
+
+

@@ -1,0 +1,17 @@
+head
+	link(rel="stylesheet",href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css")
+	link(href='/background.css', rel='stylesheet')
+
+h1 Eclectic - Signup
+
+
+
+
+
+form(action="/signup" method="post")
+	label Email
+	input(type="text",class="form-control",name="email")
+	label Password
+	input(type="text",class="form-control",name="password")
+
+	button(type="submit") Signup
