@@ -200,6 +200,13 @@ app.get('/users', function(req, res) {
     
 });
 
+app.get('/match', function(req, res) {
+
+        User.find({},function(err,users){
+            res.render("match", {users : users});
+        });
+    
+});
 
 app.post('/answermultiplechoice', ensureAuthenticated, function(req, res) {
 
