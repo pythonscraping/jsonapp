@@ -1,3 +1,8 @@
+head
+	link(href='/background.css', rel='stylesheet')
+
+
+
 each question in questions
 	form(action="/answermultiplechoice" method="post")
 		p=question.question
