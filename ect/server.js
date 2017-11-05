@@ -91,7 +91,8 @@ app.post('/generalinfo', ensureAuthenticated, function(req, res) {
             user.maxage = parseInt(info.maxage);
 
             user.save(function(err,updatedUser){
-            	res.send(updatedUser);
+            	//res.send(updatedUser);
+                res.redirect("/home");
             });
             
         });
@@ -183,6 +184,9 @@ app.get('/answerquestions', ensureAuthenticated, function(req, res) {
 });
 
 
+
+
+
 app.get('/answerquestions2', ensureAuthenticated, function(req, res) {
 
         Mutliplechoice.find({},function(err,multiplechoicequestions){
@@ -200,13 +204,75 @@ app.get('/users', function(req, res) {
     
 });
 
-app.get('/match', function(req, res) {
+app.get('/match2', function(req, res) {
 
         User.find({},function(err,users){
             res.render("match", {users : users});
         });
     
 });
+
+
+var compareAnsswers = function(original,otheruser){
+    var commonanswers = 0;
+    var differentanswers = 0;
+    for (var i = 0; i < original.length; i++) {
+        if (original[i].isAnswered){
+            var idd = original[i]._id;
+            console.log("something");
+            for (var j = 0; j < otheruser.length; j++) {
+                //console.log(typeof otheruser[j]._id);
+                //console.log(typeof idd);
+                if (idd.toString() === otheruser[j]._id.toString()){
+                    for (var z = 0; z < original[i].answers.length; z++) {
+                        var tobeTested = original[i].answers[z];
+                        if(tobeTested.selection){
+                            console.log(tobeTested.answer);
+                            for (var w = 0; w < otheruser[j].answers.length; w++) {
+                                var tocompareWith =  otheruser[j].answers[w];
+                                if(tobeTested._id.toString()==tocompareWith._id.toString()){
+                                    if(tobeTested.selection==tocompareWith.selection){
+                                        //console.log("Same answers");
+                                        commonanswers++;
+                                    }
+                                    else {
+                                        //console.log("differentanswers");
+                                        differentanswers++;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+
+    }
+    console.log("compatibility :");
+    var compatibility = commonanswers / (commonanswers+differentanswers);
+    console.log(compatibility*100);
+    return compatibility;
+}
+
+app.get('/match', function(req, res) {
+
+        User.findById(req.user._id, function(err, user) {
+        console.log("user found");
+        User.find({ age : { $gte :  req.user.minage, $lte : req.user.maxage},
+                    maxage: { $gte :  req.user.age},
+                    minage: { $lte :  req.user.age}}).lean().exec(function(err,users){
+            for (var i = 0; i < users.length; i++) {
+                users[i].compatibility = (compareAnsswers(user.answers,users[i].answers)*100).toFixed(2);
+            }
+            res.render("match", {users : users});
+        });
+
+    });
+    
+});
+
 
 app.post('/answermultiplechoice', ensureAuthenticated, function(req, res) {
 

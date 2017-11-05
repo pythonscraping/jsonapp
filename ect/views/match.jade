@@ -6,15 +6,17 @@ head
 
 div(class="login-header")
 	h4 Sort your matches
+br
 
 div(id="columns",group="group") 
 	each user in users
 		div(class="column",draggable="true",id=user._id)
-			header=user.local.email+" "
-			p=user.age+" "
+			header=user.local.email+" ( "+ user.age+" yo)"
+			p="compatibility : "+user.compatibility+ " %"
 			img(src="http://www.bowerplace.com.au/wp-content/themes/bridge-child/img/default_avatar_community.png")
 
 div(id="throwout",group="group") 
 
-button Sorted
+div(class="login-form")
+	button Validate
 script(src="/match.js")
