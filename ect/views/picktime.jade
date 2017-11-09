@@ -1,0 +1,27 @@
+head
+	link(href='/background.css', rel='stylesheet')
+	script(src="/jquery-3.2.1.min.js")
+	script(src="/picker.js")
+	script(src="/picker.date.js")
+	link(href='/default.css', rel='stylesheet')
+	link(href='/default.date.css', rel='stylesheet')
+
+
+div(class="login-header")
+	h4 I am available
+br
+
+div(class="login-form")
+	form(action="/picktime", method="post", id="sendtime")
+		br
+		h2 Between
+		input(class="datepicker", id="from",name="from")
+		br
+		h2 And Between 
+		input(class="datepicker2", id="to",name="to")
+		br
+		br
+		button(type="submit") Submit
+
+
+script(src="/picktime.js")

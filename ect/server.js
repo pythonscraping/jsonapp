@@ -99,6 +99,21 @@ app.post('/generalinfo', ensureAuthenticated, function(req, res) {
     
 });
 
+app.post('/favorites', ensureAuthenticated, function(req, res) {
+
+        var info = req.body;
+        console.log(info);
+
+        User.findById(req.user._id, function(err, user) {
+            user.favorites = info.favorites;
+            user.save(function(err,updatedUser){
+                //res.send(updatedUser);
+                res.redirect("/home");
+            });
+        });
+    
+});
+
 app.post('/multiplechoice', ensureAuthenticated, function(req, res) {
 
        	var info = req.body;
@@ -149,7 +164,7 @@ app.get('/', ensureAuthenticated, function(req, res) {
     
 });
 
-app.get('/home', function(req, res) {
+app.get('/home', ensureAuthenticated,function(req, res) {
 
         res.render("home");
     
@@ -196,7 +211,7 @@ app.get('/answerquestions2', ensureAuthenticated, function(req, res) {
 });
 
 
-app.get('/users', function(req, res) {
+app.get('/users', ensureAuthenticated, function(req, res) {
 
         User.find({},function(err,users){
         	res.send(users);
@@ -204,7 +219,7 @@ app.get('/users', function(req, res) {
     
 });
 
-app.get('/match2', function(req, res) {
+app.get('/match2', ensureAuthenticated, function(req, res) {
 
         User.find({},function(err,users){
             res.render("match", {users : users});
@@ -256,20 +271,47 @@ var compareAnsswers = function(original,otheruser){
     return compatibility;
 }
 
-app.get('/match', function(req, res) {
+app.get('/match', ensureAuthenticated,function(req, res) {
 
         User.findById(req.user._id, function(err, user) {
         console.log("user found");
         User.find({ age : { $gte :  req.user.minage, $lte : req.user.maxage},
                     maxage: { $gte :  req.user.age},
-                    minage: { $lte :  req.user.age}}).lean().exec(function(err,users){
+                    minage: { $lte :  req.user.age}}).limit(20).lean().exec(function(err,users){
             for (var i = 0; i < users.length; i++) {
                 users[i].compatibility = (compareAnsswers(user.answers,users[i].answers)*100).toFixed(2);
             }
-            res.render("match", {users : users});
+            res.render("match", {users : users.sort((a, b) => a.compatibility < b.compatibility)});
         });
 
     });
+    
+});
+
+app.get('/picktime', function(req, res) {
+        
+        res.render("picktime");
+    
+});
+
+
+app.post('/picktime', function(req, res) {
+        console.log(req.body);
+        
+        info = req.body;
+
+        User.findById(req.user._id, function(err, user) {
+            console.log(req.body);
+            user.from = info.from;
+            user.todate = info.todate;
+
+
+            user.save(function(err,updatedUser){
+                //res.send(updatedUser);
+                res.send(req.updatedUser);
+            });
+            
+        });
     
 });
 
@@ -311,6 +353,8 @@ app.post('/signup', passport.authenticate('local-signup', {
         failureRedirect : '/login', // redirect back to the signup page if there is an error
         failureFlash : true // allow flash messages
     }));
+
+
 
 
 

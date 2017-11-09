@@ -1,17 +1,20 @@
 head
 	link(href='/background.css', rel='stylesheet')
+	link(href='https://fonts.googleapis.com/css?family=Libre Franklin',rel='stylesheet')
 
 
+div(class="login")
+	div(class="login-form")
+		each question in questions
+			form(action="/answermultiplechoice" method="post")
+				p=question.question
+				input(type="hidden" name="questionid" value=question._id)
+				ul
+					each answer in question.answers
+						li
+							input(type="radio",name="answer", value=answer._id)
+							span=" "+answer.answer
 
-each question in questions
-	form(action="/answermultiplechoice" method="post")
-		p=question.question
-		input(type="hidden" name="questionid" value=question._id)
-		ul
-			each answer in question.answers
-				li
-					input(type="radio",name="answer", value=answer._id)
-					span=answer.answer
-		input(type="submit")
-		br
-		hr
+				button(type="submit") Submit
+				br
+				hr
