@@ -281,7 +281,10 @@ app.get('/match', ensureAuthenticated,function(req, res) {
             for (var i = 0; i < users.length; i++) {
                 users[i].compatibility = (compareAnsswers(user.answers,users[i].answers)*100).toFixed(2);
             }
-            res.render("match", {users : users.sort((a, b) => a.compatibility < b.compatibility)});
+            res.render("match", {users : users.sort(function(a, b) {
+                return parseFloat(b.compatibility) - parseFloat(a.compatibility);
+                }
+                )});
         });
 
     });
