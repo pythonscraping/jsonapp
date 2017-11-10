@@ -18,16 +18,22 @@ function preventMotion(event)
     event.stopPropagation();
 }
 
-*/
+
 
 
 var elem = document.getElementById("columns");
 
-var defaultPrevent=function(e){e.preventDefault();}
-elem.addEventListener("touchstart", defaultPrevent);
-elem.addEventListener("touchmove" , defaultPrevent);
 
+*/
 
+var elems = document.getElementsByClassName("column");
+
+for(var i = 0; i < elems.length; i++)
+{
+	var defaultPrevent=function(e){e.preventDefault();}
+	elems.item(i).addEventListener("touchstart", defaultPrevent);
+	elems.item(i).addEventListener("touchmove" , defaultPrevent);
+}
 
 
 $('#sorted').click(function(){
