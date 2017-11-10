@@ -9,6 +9,19 @@ var sortable = Sortable.create(il,{
 
 
 
+window.addEventListener("scroll", preventMotion, false);
+window.addEventListener("touchmove", preventMotion, false);
+
+function preventMotion(event)
+{
+    window.scrollTo(0, 0);
+    event.preventDefault();
+    event.stopPropagation();
+}
+
+
+
+
 $('#sorted').click(function(){
 	var favorites = [];
 	$('#columns > .column').each(function(){ 

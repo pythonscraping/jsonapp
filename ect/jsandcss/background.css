@@ -14,8 +14,12 @@ color:black;
 text-align: center;
 font-family: 'Libre Franklin';
 font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
+  overflow-x: hidden;
 }
 
+html {
+	  overflow-x: hidden;
+}
 
 
 
