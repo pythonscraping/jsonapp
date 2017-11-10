@@ -14,11 +14,6 @@ color:black;
 text-align: center;
 font-family: 'Libre Franklin';
 font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
-  overflow-x: hidden;
-}
-
-html {
-	  overflow-x: hidden;
 }
 
 
@@ -62,6 +57,7 @@ html {
 }
 
 #columns {
+	margin-right: 20px;
 	min-height: 50px;
 	border-color: black;
 	border-radius: 10px;
@@ -72,6 +68,7 @@ html {
 }
 
 #throwout {
+	margin-right: 20px;
 	min-height: 50px;
 	border-color: black;
 	border-radius: 10px;
