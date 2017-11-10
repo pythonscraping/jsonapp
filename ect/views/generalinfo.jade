@@ -2,28 +2,29 @@ head
 	link(href='/background.css', rel='stylesheet')
 	link(href='https://fonts.googleapis.com/css?family=Libre Franklin',rel='stylesheet')
 
-div(class="login-header")
-	h5 Eclectic 
-	h6 General info
+	
 
 div(class="login")
-	div(class="login-form")
-		form(action="/generalinfo" method="post")
-			h3 You are a 
-				select(name="gender")
-					option(value="null") -
-					option(value="female") Female
-					option(value="male") Male
-			br
-			h3 How old are you ? 
-				select(name="age")
-					option(value="null") -
-					- var n = 18;
-					while n < 50
-						option(value=""+n)=n
-						p=n++
-			br
-			h3 Looking for people between 
+	div(class="login-form  container space-between")
+		form(action="/generalinfo" method="post" class="container space-between")
+			h5 Eclectic - General info
+			div
+				span You are a 
+					select(name="gender")
+						option(value="null") -
+						option(value="female") Female
+						option(value="male") Male
+				br
+			div
+				span How old are you ? 
+					select(name="age")
+						option(value="null") -
+						- var n = 18;
+						while n < 50
+							option(value=""+n)=n
+							p=n++
+				br
+			span Looking for people between 
 				select(name="minage")
 					option(value="null") -
 					- var n = 18;
@@ -31,7 +32,7 @@ div(class="login")
 						option(value=""+n)=n
 						p=n++
 			br
-			h3 and 
+			span and 
 				select(name="maxage")
 					option(value="null") -
 					- var n = 18;
@@ -40,6 +41,6 @@ div(class="login")
 						p=n++
 			br
 			br
-			button(type="submit") Next 
+			button(type="submit", class="asbestos-flat-button") Next 
 
 
