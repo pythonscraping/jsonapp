@@ -8,7 +8,7 @@ var sortable = Sortable.create(il,{
 
 
 
-
+/*
 window.addEventListener("touchmove", preventMotion, false);
 
 function preventMotion(event)
@@ -17,6 +17,15 @@ function preventMotion(event)
     event.preventDefault();
     event.stopPropagation();
 }
+
+*/
+
+
+var elem = document.getElementById("columns");
+
+var defaultPrevent=function(e){e.preventDefault();}
+elem.addEventListener("touchstart", defaultPrevent);
+elem.addEventListener("touchmove" , defaultPrevent);
 
 
 
