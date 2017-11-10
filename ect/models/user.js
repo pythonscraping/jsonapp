@@ -19,7 +19,11 @@ var userSchema = mongoose.Schema({
     minage: Number,
     maxage: Number,
     img: { data: Buffer, contentType: String },
-    answers : [Mutliplechoice.schema]
+    answers : [Mutliplechoice.schema],
+    // availability
+    from: Date,
+    todate: Date,
+    favorites: [String]
      
 
 });
