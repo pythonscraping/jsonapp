@@ -31,7 +31,7 @@ var elems = document.getElementsByClassName("column");
 for(var i = 0; i < elems.length; i++)
 {
 	var defaultPrevent=function(e){e.preventDefault();}
-	elems.item(i).addEventListener("touchstart", defaultPrevent);
+	//elems.item(i).addEventListener("touchstart", defaultPrevent);
 	elems.item(i).addEventListener("touchmove" , defaultPrevent);
 }
 
