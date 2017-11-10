@@ -21,3 +21,13 @@ br
 div(class="login-form")
 	button(id="sorted", class="asbestos-flat-button") Validate
 script(src="/match.js")
+
+
+
+each user in users
+	div(class=user._id+" modal")
+		p="Username :"+ user.local.email
+		img(src="http://www.bowerplace.com.au/wp-content/themes/bridge-child/img/default_avatar_community.png")
+		p="Age : "+user.age
+		p="compatibility : "+user.compatibility+ " %"
+		p="gender : "+user.gender+ " %"

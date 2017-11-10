@@ -49,3 +49,23 @@ $('#sorted').click(function(){
                     });
 });
 
+
+
+$('.column').click(function(){
+	
+	var idd = $(this).attr("id");
+	$('.modal.'+idd).css('display', 'block');
+
+	$('.modal.'+idd).click(function(){
+	
+		 $(this).css('display', 'none');
+	});
+});
+
+
+
+
+
+
+
+
