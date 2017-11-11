@@ -1,19 +1,25 @@
 
 body {
-  background: #E0EAFC;  /* fallback for old browsers */
+ background: #E0EAFC;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #CFDEF3, #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  font-family: 'Ubuntu', sans-serif;
-	background-size: 100% 110%;
-	height: 100%;/*
+font-family: 'Ubuntu', sans-serif;
+background-size: 100% 110
+
+/*
 overflow: hidden;
 -webkit-overflow-scrolling: auto;
-line-height: 1.6;*/
+line-height: 1.6;
+
+*/
+
+font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
+
 color:black;
 text-align: center;
 font-family: 'Libre Franklin';
-font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
+
 }
 
 
@@ -26,6 +32,8 @@ font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
 }
 
 .column {
+	font-size: auto;
+
     height: 21vh;
     width:  21vh;
     display: inline-block;
@@ -38,6 +46,7 @@ font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
     -webkit-overflow-scrolling: auto
 }
     .column header {
+    	font-size: auto;
         color: #fff;
         background: black;
         text-shadow: #000 0 1px;
@@ -54,9 +63,21 @@ font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
 
 .column img {
     max-height: 20%;
+    width: auto;
+    object-fit: contain;
+     height: auto;
+  overflow: hidden;
+}
+
+.column > div , .column > p {
+	 height: auto;
+  overflow: hidden;
 }
 
 #columns {
+
+	display: flex;
+	flex-wrap: wrap;
 	margin-right: 34px;
 	min-height: 50px;
 	border-color: black;
@@ -68,6 +89,9 @@ font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
 }
 
 #throwout {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
 	margin-right: 34px;
 	min-height: 50px;
 	border-color: black;
@@ -75,7 +99,6 @@ font-size: calc( 14px + 8 * ((100vw - 500px) / 1500));
 	border-width:2px;
 	border-style:dotted;
 	background-color: black;
-	display: block;
 	-webkit-overflow-scrolling: auto
 }
 
@@ -94,10 +117,11 @@ input{
 
 	
 .asbestos-flat-button {
+  
   position: relative;
   vertical-align: top;
   width: 100%;
-  height: 10%;
+  height: 10vh;
   padding: 0;
   font-size: 22px;
   color:white;
@@ -123,9 +147,23 @@ ul li {
 
 
 
+.container2 {
+  display: flex;
+  flex-direction: column;
+}
+.container2.space-around {
+  justify-content: space-around;
+}
+.container2.space-between {  
+  justify-content: space-between;
+}
+
+
+
+
 .container {
   display: flex;
-  height: 100%;
+  height: 96%;
   flex-direction: column;
 }
 .container.space-around {
@@ -135,9 +173,10 @@ ul li {
   justify-content: space-between;
 }
 
+/*
 .datepicker .datepicker2 {
 	height: 20%;
-}
+}*/
 
 
 .modal {
@@ -161,4 +200,9 @@ ul li {
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+.picker__box {
+	font-size: 100% !important;
 }

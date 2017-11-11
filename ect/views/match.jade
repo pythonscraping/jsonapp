@@ -10,9 +10,12 @@ br
 
 div(id="columns",group="group") 
 	each user in users
-		div(class="column",draggable="true",id=user._id)
-			header=user.local.email+" ( "+ user.age+" yo)"
-			p="compatibility : "+user.compatibility+ " %"
+		div(class="column container2",draggable="true",id=user._id)
+			div
+				header=user.local.email+" ( "+ user.age+" yo)"
+			div
+				span="compatibility : "+user.compatibility+ " %"
+
 			img(src="http://www.bowerplace.com.au/wp-content/themes/bridge-child/img/default_avatar_community.png")
 
 div(id="throwout",group="group") 

@@ -7,20 +7,18 @@ head
 	link(href='/default.date.css', rel='stylesheet')
 
 
-
-
-div(class="login-form")
-	form(action="/picktime", method="post", id="sendtime", class="container space-between")
-		h4 I am available
-		br
+form(action="/picktime", method="post", id="sendtime", class="container space-between")
+	div 
+		span Availability
+	div
 		span Between
+	div
 		input(class="datepicker", id="from",name="from")
-		br
+	div 
 		span And Between 
+	div
 		input(class="datepicker2", id="to",name="to")
-		br
-		br
+	div
 		button(type="submit", class="asbestos-flat-button") Submit
-
-
+		
 script(src="/picktime.js")

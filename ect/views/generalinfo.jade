@@ -24,7 +24,9 @@ div(class="login")
 							option(value=""+n)=n
 							p=n++
 				br
-			span Looking for people between 
+			div
+				span Looking for people between 
+			div
 				select(name="minage")
 					option(value="null") -
 					- var n = 18;
@@ -33,6 +35,7 @@ div(class="login")
 						p=n++
 			br
 			span and 
+			div
 				select(name="maxage")
 					option(value="null") -
 					- var n = 18;
